@@ -45,6 +45,10 @@ class AJPlayerViewModel: NSObject {
 
     open var shouldSeekTo: TimeInterval = 0
     
+    var videoOutput: AVPlayerItemVideoOutput {
+       return AVPlayerItemVideoOutput(pixelBufferAttributes: [kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCVPixelFormatType_32BGRA)])
+    }
+    
     let listenerMap: NSHashTable<AJPlayerControllerListener> = NSHashTable<AJPlayerControllerListener>.weakObjects()
 
 
@@ -59,6 +63,7 @@ class AJPlayerViewModel: NSObject {
     
     
     func changeState(to: AJPlayerState) {
+        print(to)
         if state == to { return }
         switch (state, to) {
         case (_, .initial):
