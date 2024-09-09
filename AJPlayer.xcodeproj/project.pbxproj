@@ -13,6 +13,10 @@
 		2D13E15D2C7874B90006D930 /* AJPlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D13E15C2C7874B90006D930 /* AJPlayerControlView.swift */; };
 		2D13E15F2C7874D60006D930 /* AJPlayerLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D13E15E2C7874D60006D930 /* AJPlayerLoadingView.swift */; };
 		2D2C984C2C807584003261C2 /* AJTimeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2C984B2C807584003261C2 /* AJTimeSlider.swift */; };
+		2D41297B2C8EA28800322C00 /* AJRippleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D41297A2C8EA28800322C00 /* AJRippleView.swift */; };
+		2D4129802C8EA5C700322C00 /* ani_rewind.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D41297D2C8EA5C700322C00 /* ani_rewind.json */; };
+		2D4129812C8EA5C700322C00 /* ani_forward.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D41297E2C8EA5C700322C00 /* ani_forward.json */; };
+		2D4129822C8EA5C700322C00 /* ani_play.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D41297F2C8EA5C700322C00 /* ani_play.json */; };
 		2D573E9E2C74810000DCEC57 /* AJPlayer.docc in Sources */ = {isa = PBXBuildFile; fileRef = 2D573E9D2C74810000DCEC57 /* AJPlayer.docc */; };
 		2D573EA42C74810000DCEC57 /* AJPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D573E992C74810000DCEC57 /* AJPlayer.framework */; };
 		2D573EA92C74810000DCEC57 /* AJPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D573EA82C74810000DCEC57 /* AJPlayerTests.swift */; };
@@ -44,6 +48,10 @@
 		2D13E15C2C7874B90006D930 /* AJPlayerControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJPlayerControlView.swift; sourceTree = "<group>"; };
 		2D13E15E2C7874D60006D930 /* AJPlayerLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJPlayerLoadingView.swift; sourceTree = "<group>"; };
 		2D2C984B2C807584003261C2 /* AJTimeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJTimeSlider.swift; sourceTree = "<group>"; };
+		2D41297A2C8EA28800322C00 /* AJRippleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJRippleView.swift; sourceTree = "<group>"; };
+		2D41297D2C8EA5C700322C00 /* ani_rewind.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ani_rewind.json; sourceTree = "<group>"; };
+		2D41297E2C8EA5C700322C00 /* ani_forward.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ani_forward.json; sourceTree = "<group>"; };
+		2D41297F2C8EA5C700322C00 /* ani_play.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ani_play.json; sourceTree = "<group>"; };
 		2D573E992C74810000DCEC57 /* AJPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AJPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D573E9C2C74810000DCEC57 /* AJPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AJPlayer.h; sourceTree = "<group>"; };
 		2D573E9D2C74810000DCEC57 /* AJPlayer.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = AJPlayer.docc; sourceTree = "<group>"; };
@@ -91,10 +99,21 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		2D41297C2C8EA5A400322C00 /* VideoAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				2D41297E2C8EA5C700322C00 /* ani_forward.json */,
+				2D41297F2C8EA5C700322C00 /* ani_play.json */,
+				2D41297D2C8EA5C700322C00 /* ani_rewind.json */,
+			);
+			path = VideoAnimation;
+			sourceTree = "<group>";
+		};
 		2D573E8F2C74810000DCEC57 = {
 			isa = PBXGroup;
 			children = (
 				2D573E9B2C74810000DCEC57 /* AJPlayer */,
+				2D41297C2C8EA5A400322C00 /* VideoAnimation */,
 				2D0952F42C85C2AE00A36D0F /* Resource */,
 				2D573EA72C74810000DCEC57 /* AJPlayerTests */,
 				2D573E9A2C74810000DCEC57 /* Products */,
@@ -128,6 +147,7 @@
 				2D573EB92C759EAD00DCEC57 /* AJPlayerResource.swift */,
 				2D0952F22C85C1C700A36D0F /* AJPlayerAsset.swift */,
 				2D573EB52C758F1300DCEC57 /* AJPlayerState.swift */,
+				2D41297A2C8EA28800322C00 /* AJRippleView.swift */,
 				2D573E9D2C74810000DCEC57 /* AJPlayer.docc */,
 			);
 			path = AJPlayer;
@@ -256,6 +276,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D4129822C8EA5C700322C00 /* ani_play.json in Resources */,
+				2D4129812C8EA5C700322C00 /* ani_forward.json in Resources */,
+				2D4129802C8EA5C700322C00 /* ani_rewind.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +367,7 @@
 				2D573EB42C7489CA00DCEC57 /* AJPLayerLayerView.swift in Sources */,
 				2D573ECE2C76FC3600DCEC57 /* Loggable.swift in Sources */,
 				2D573E9E2C74810000DCEC57 /* AJPlayer.docc in Sources */,
+				2D41297B2C8EA28800322C00 /* AJRippleView.swift in Sources */,
 				2D573EB82C759D8200DCEC57 /* AJPlayerViewModel.swift in Sources */,
 				2D13E15F2C7874D60006D930 /* AJPlayerLoadingView.swift in Sources */,
 				2D573EB62C758F1300DCEC57 /* AJPlayerState.swift in Sources */,
