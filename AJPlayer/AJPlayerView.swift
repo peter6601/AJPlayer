@@ -18,7 +18,7 @@ open class AJPlayerView: UIView, Loggable {
 
     lazy var viewModel: AJPlayerViewModel = {
         let vm = AJPlayerViewModel()
-        viewModel.delegate = self
+        vm.delegate = self
         return vm
     }()
     
@@ -33,8 +33,7 @@ open class AJPlayerView: UIView, Loggable {
         playerLayerView.playerLayer.player = nil
         // Reset ControlView
 //        getCurrentControlView().resetControlView()
-        // change player item and add observer
-        let videoOutput = AVPlayerItemVideoOutput(pixelBufferAttributes: [kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCVPixelFormatType_32BGRA)])
+        let videoOutput = viewModel.videoOutput
         resource.playerItem.add(videoOutput)
         // reset duration's isValid state
         viewModel.durationIsValid = false
@@ -43,6 +42,7 @@ open class AJPlayerView: UIView, Loggable {
         player = AVPlayer(playerItem: resource.playerItem)
         // Reset Player Layer
         playerLayerView.playerLayer.player = player
+        addToView()
         addObserversTo(resource.playerItem)
         // change resourece
         if let currentResourceItem = viewModel.currentResource?.playerItem {
@@ -52,6 +52,12 @@ open class AJPlayerView: UIView, Loggable {
         viewModel.currentResourceIndex = index
         
         play()
+    }
+    
+    func addToView() {
+        self.addSubview(playerLayerView)
+        playerLayerView.frame = self.bounds
+        playerLayerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
     
     open func clearResource() {
