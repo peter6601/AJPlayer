@@ -16,6 +16,8 @@ open class AJPlayerSetting {
     public var fastForwardSpeed: Float = 1.0
     public var voiceAdjustSpeed: Float = 1.0
     public var brightnessAdjustSpeed: Float = 1.0
+    public var fastForwardSec: Int = 10
+
 }
 
 protocol AJPlayerViewModelDelegate: AnyObject {

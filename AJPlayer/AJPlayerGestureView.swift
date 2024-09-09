@@ -51,6 +51,8 @@ open class AJPlayerGestureView: UIView {
     private var verticalPanIsDisable: Bool = false
     private var horizontalPanIsDisable: Bool = false
     open weak var delegate: AJPlayerGestureViewDelegate?
+    private var panCounter = PanCounter()
+    open var playerSetting: AJPlayerSetting = AJPlayerSetting()
     
     open func disableGestures(_ gestures: AJPlayerGestureOptions) {
         let all: AJPlayerGestureOptions = [.panVertical,.panHorizontal,.singleTap,.doubleTap]
@@ -152,23 +154,19 @@ open class AJPlayerGestureView: UIView {
     
     
     @objc private func tapbtnFastBackword(completion: @escaping (Bool) -> Void) {
-        leftIsStartCount += 1
-        if leftIsStartCount > 1 {
-            leftTempAdd += 1
-        }
-        let fastforwardSec: Int = VideoConfig.fastForwardSec
-        let sec = String(leftTempAdd * fastforwardSec)
+        panCounter.add(by: .left)
+        panCounter.checkAdd(by: .left)
+        let fastforwardSec: Int = playerSetting.fastForwardSec
+        let sec = String(panCounter.leftTempAdd * fastforwardSec)
         let atrbuteStr = getatrbuteString(title: "\(sec)秒")
         var rippleViewConfig = TVRippleViewConfig()
-        rippleViewConfig.UI_PAGE_HEIGHT = self.vFastBackWord.frame.height
-        rippleViewConfig.UI_PAGE_WIDTH =  self.vFastBackWord.frame.width
+        rippleViewConfig.pageHeight = self.vFastBackWord.frame.height
+        rippleViewConfig.pageWeight =  self.vFastBackWord.frame.width
         _ = TVRippleView.showRipple(type: .TVRipple_Left, viewConfig: rippleViewConfig, superview: self.vFastBackWord, atributeTipStr:atrbuteStr) {
-            self.leftIsStartCount -= 1
-            if self.leftIsStartCount == 0 {
-                self.leftTempAdd = 1
-            }
+            self.panCounter.mins(by: .left)
+            self.panCounter.checkSet(by: .left)
+            completion(true)
         }
-        customPlayViewDelegate?.tappedBackword()
     }
     
     private func getatrbuteString(title: String, color: UIColor = .white, font: UIFont = UIFont.systemFont(ofSize: 12) ) -> NSMutableAttributedString {
@@ -206,12 +204,20 @@ class PanCounter {
             leftIsStartCount -= 1
         }
     }
-    func check(by direct: Direction) {
+    func checkAdd(by direct: Direction) {
         switch direct {
         case .right:
         self.rightTempAdd += rightIsStartCount > 1 ? 1 : 0
         case .left:
             leftTempAdd += leftIsStartCount > 1 ? 1 : 0
+        }
+    }
+    func checkSet(by direct: Direction) {
+        switch direct {
+        case .right:
+        self.rightTempAdd = rightIsStartCount == 1 ? 1 : rightTempAdd
+        case .left:
+            leftTempAdd = leftIsStartCount == 1 ? 1 : leftTempAdd
         }
     }
 }

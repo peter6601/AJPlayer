@@ -54,7 +54,7 @@ open class AJPlayerControlView: UIView {
     open var topMaskBarHeight: CGFloat = 37
     open var bottomMaskBarHeight: CGFloat = 40.0
     open var delayItem: DispatchWorkItem?
-    
+
     private var mAlpha: CGFloat = 0.3
     private var oAlpha: CGFloat = 1.0
     private var animationTime: TimeInterval = 0.3
